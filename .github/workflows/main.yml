@@ -24,7 +24,6 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          unityVersion: ${{ matrix.unityVersion }}
           versioning: Semantic
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
