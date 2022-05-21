@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         unityVersion:
-          - 2022.1.1f1
+          - 2022.2.0a13
         targetPlatform:
           - WebGL
     steps:
