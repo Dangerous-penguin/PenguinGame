@@ -129,7 +129,6 @@ public class PlayerController : MonoBehaviour
 
             //check if the player is stuck somewhere, stop moving if so
             _lastMoves.Push(transform.position);
-            _lastMoves.DebugPrint();
             var lastMovesTotal = 0.0f;
             for (var index = 0; index < _lastMoves.Length - 1; index++)
             {
