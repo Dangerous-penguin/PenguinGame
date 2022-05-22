@@ -273,7 +273,11 @@ MonoBehaviour:
   <fsm>k__BackingField: {fileID: 114576097}
   <enemySO>k__BackingField: {fileID: 11400000, guid: 4a37c8698288f124f82aa3e29a3b3343,
     type: 2}
+  <playerLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
   <agent>k__BackingField: {fileID: 114576096}
+  playerTarget: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,9 +705,9 @@ GameObject:
   - component: {fileID: 1455909062}
   - component: {fileID: 1455909061}
   - component: {fileID: 1455909060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

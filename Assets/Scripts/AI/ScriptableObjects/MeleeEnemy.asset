@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fca8ace671d5b74684f593b840f9832, type: 3}
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: 
-  test: 
-  waitTimerMax: 1
   waitTimerMin: 3
+  waitTimerMax: 1
+  attackRange: 1.9
+  aggroRange: 5.92
+  chaseRange: 8.98
+  attackCooldown: 2
+  attackDamage: 10
+  maxHealth: 10
