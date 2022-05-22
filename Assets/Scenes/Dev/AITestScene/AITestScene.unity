@@ -232,7 +232,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 114576091}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.2
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -257,7 +257,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d889e93abc7d9ef4b8d593bcee561f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackBoard: {fileID: 114576098}
+  <fsm>k__BackingField: {fileID: 114576097}
+  <enemySO>k__BackingField: {fileID: 11400000, guid: 4a37c8698288f124f82aa3e29a3b3343,
+    type: 2}
+  <playerLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  <agent>k__BackingField: {fileID: 114576096}
+  playerTarget: {fileID: 0}
 --- !u!114 &114576098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,9 +281,9 @@ MonoBehaviour:
   <enemySO>k__BackingField: {fileID: 11400000, guid: 4a37c8698288f124f82aa3e29a3b3343,
     type: 2}
   <playerLayer>k__BackingField:
-    serializedVersion: 2
     m_Bits: 0
   <agent>k__BackingField: {fileID: 114576096}
+  <cachedTransform>k__BackingField: {fileID: 0}
   playerTarget: {fileID: 0}
 --- !u!1 &330585543
 GameObject:

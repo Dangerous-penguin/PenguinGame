@@ -8,30 +8,36 @@ namespace DangerousPenguin.AI
     public class Chasing : IState
     {
 
-        private MeeleMinionBB _blackBoard;
-        private Transform _transform;
+        private FSM _fsm;
+        private EnemySO _enemySO;
         private NavMeshAgent _agent;
+        private Transform _transform;
+        private LayerMask _playerLayer;
+        private Transform _targetPlayer;
 
         private float _checkFollowTimer;
         private float _checkAttackTimer;
 
-        public Chasing(MeeleMinionBB blackBoard)
+        public Chasing(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, LayerMask playerLayer, Transform targetPlayer)
         {
-            _blackBoard = blackBoard;
-            _transform = blackBoard.cachedTransform;
-            _agent = blackBoard.agent;
+            _fsm = fsm;
+            _enemySO = enemySO;
+            _agent = agent;
+            _transform = cachedTransform;
+            _playerLayer = playerLayer;
+            _targetPlayer = targetPlayer;
         }
 
         public void SateUpdate()
         {
             if(OutOfRange())
             {
-                ChangeState(_blackBoard.patrolState);
+                ChangeState(new Patrolling(_fsm,_enemySO,_agent,_transform,_playerLayer));
                 return;
             }
             if(InAttackRange())
             {
-                ChangeState(_blackBoard.waitState); //change to attack later
+                ChangeState(new Patrolling(_fsm, _enemySO, _agent, _transform, _playerLayer)); //change to attack later
                 return;
             }
         }
@@ -40,7 +46,7 @@ namespace DangerousPenguin.AI
         {
             _checkFollowTimer = 0;
             _checkAttackTimer = 0;
-            _agent.SetDestination(_blackBoard.playerTarget.position);
+            _agent.SetDestination(_targetPlayer.position);
         }
 
         public void OnStateExit()
@@ -52,14 +58,14 @@ namespace DangerousPenguin.AI
 
         public void ChangeState(IState newState)
         {
-            _blackBoard.fsm.ChangeState(newState);
+            _fsm.ChangeState(newState);
         }
 
         private bool OutOfRange()
         {
             if(_checkFollowTimer <= 0)
             {
-                Collider[] colliders = Physics.OverlapSphere(_transform.position,_blackBoard.enemySO.chaseRange);
+                Collider[] colliders = Physics.OverlapSphere(_transform.position,_enemySO.chaseRange);
                 foreach(var colider in colliders)
                 {
                     if(colider.CompareTag("Player"))
@@ -81,7 +87,7 @@ namespace DangerousPenguin.AI
         {
             if (_checkAttackTimer <= 0)
             {
-                Collider[] colliders = Physics.OverlapSphere(_transform.position, _blackBoard.enemySO.attackRange);
+                Collider[] colliders = Physics.OverlapSphere(_transform.position, _enemySO.attackRange);
                 foreach (var colider in colliders)
                 {
                     if (colider.CompareTag("Player"))

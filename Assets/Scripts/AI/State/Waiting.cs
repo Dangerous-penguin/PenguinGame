@@ -8,8 +8,8 @@ namespace DangerousPenguin.AI
     public class Waiting : IState
     {
 
-        private MeeleMinionBB _blackBoard;
-        private MeleeEnemySO _enemySO;
+        private FSM _fsm;
+        private EnemySO _enemySO;
         private NavMeshAgent _agent;
         private Transform _transform;
         private LayerMask _playerLayer;
@@ -17,13 +17,12 @@ namespace DangerousPenguin.AI
         private float _waitTimer;
         private float _checkAgroTimer;
 
-        public Waiting(MeeleMinionBB blackBoard)
+        public Waiting(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, LayerMask playerLayer)
         {
-            _blackBoard = blackBoard;
-            _enemySO = blackBoard.enemySO;
-            _agent = blackBoard.agent;
-            _transform = blackBoard.cachedTransform;
-            _playerLayer = blackBoard.playerLayer;
+            _enemySO = enemySO;
+            _agent = agent;
+            _transform = cachedTransform;
+            _playerLayer = playerLayer;
         }
 
         public void SateUpdate()
@@ -38,8 +37,7 @@ namespace DangerousPenguin.AI
                     {
                         if (colider.CompareTag("Player"))
                         {
-                            _blackBoard.playerTarget = colider.transform;
-                            ChangeState(_blackBoard.chaseState);
+                            ChangeState(new Chasing(_fsm,_enemySO,_agent,_transform,_playerLayer,colider.transform));
                             return;
                         }
                     }
@@ -57,7 +55,7 @@ namespace DangerousPenguin.AI
             }
             else
             {
-                ChangeState(_blackBoard.patrolState);
+                ChangeState(new Patrolling(_fsm,_enemySO,_agent,_transform,_playerLayer));
                 return;
             }
         }
@@ -65,8 +63,7 @@ namespace DangerousPenguin.AI
         public void OnStateEnter()
         {
             _agent.isStopped = true;
-            MeleeEnemySO enemySO = _blackBoard.enemySO;
-            _waitTimer = Random.Range(enemySO.waitTimerMin,enemySO.waitTimerMax);
+            _waitTimer = Random.Range(_enemySO.waitTimerMin,_enemySO.waitTimerMax);
             _checkAgroTimer = 0;
         }
 
@@ -78,7 +75,7 @@ namespace DangerousPenguin.AI
 
         public void ChangeState(IState newState)
         {
-            _blackBoard.fsm.ChangeState(newState);
+            _fsm.ChangeState(newState);
         }
 
     }

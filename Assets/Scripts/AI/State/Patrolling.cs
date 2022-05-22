@@ -7,9 +7,8 @@ namespace DangerousPenguin.AI
 {
     public class Patrolling : IState
     {
-        
-        private MeeleMinionBB _blackBoard;
-        private MeleeEnemySO _enemySO;
+        private FSM _fsm;
+        private EnemySO _enemySO;
         private NavMeshAgent _agent;
         private Transform _transform;
         private LayerMask _playerLayer;
@@ -17,18 +16,17 @@ namespace DangerousPenguin.AI
         private Vector3 _target;
         private float _checkAgroTimer;
 
-        public Patrolling(MeeleMinionBB blackBoard)
+        public Patrolling(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, LayerMask playerLayer)
         {
-            _blackBoard = blackBoard;
-            _enemySO = blackBoard.enemySO;
-            _agent = blackBoard.agent;
-            _transform = blackBoard.cachedTransform;
-            _playerLayer = blackBoard.playerLayer;
+            _enemySO = enemySO;
+            _agent = agent;
+            _transform = cachedTransform;
+            _playerLayer = playerLayer;
         }
 
         public void SateUpdate()
         {
-            if(_checkAgroTimer <= 0) //Probably make a different class and add it in the bb
+            if(_checkAgroTimer <= 0) //Probably make a different class and call a method
             {
                 Collider[] colliders = Physics.OverlapSphere(_transform.position, _enemySO.aggroRange);
 
@@ -38,8 +36,7 @@ namespace DangerousPenguin.AI
                     {
                         if (colider.CompareTag("Player"))
                         {
-                            _blackBoard.playerTarget = colider.transform;
-                            ChangeState(_blackBoard.chaseState);
+                            ChangeState(new Chasing(_fsm,_enemySO,_agent,_transform,_playerLayer,colider.transform));
                             return;
                         }
                     }
@@ -53,7 +50,7 @@ namespace DangerousPenguin.AI
 
             if (Vector3.Distance(_transform.position, _target) < 1) 
             {
-                ChangeState(_blackBoard.waitState);
+                ChangeState(new Waiting(_fsm,_enemySO,_agent,_transform,_playerLayer));
                 return;
             }
         }
@@ -70,7 +67,7 @@ namespace DangerousPenguin.AI
 
         public void ChangeState(IState newState)
         {
-            _blackBoard.fsm.ChangeState(newState);
+            _fsm.ChangeState(newState);
         }
 
         private void GetNewPosition()

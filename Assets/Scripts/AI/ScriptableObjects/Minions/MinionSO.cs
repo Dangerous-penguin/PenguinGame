@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace DangerousPenguin.AI
 {
-    [CreateAssetMenu(fileName = "New Enemy", menuName ="ScriptableObjects/Enemy")]
-    public class MeleeEnemySO : ScriptableObject
+    [CreateAssetMenu(fileName = "New Enenmy", menuName = "ScriptableObjects/Enemy")]
+    public class EnemySO : ScriptableObject
     {
         public float waitTimerMin;
         public float waitTimerMax;
