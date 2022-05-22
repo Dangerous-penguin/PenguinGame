@@ -7,24 +7,51 @@ namespace DangerousPenguin.AI
 {
     public class Patrolling : IState
     {
+        
         private MeeleMinionBB _blackBoard;
-
+        private MeleeEnemySO _enemySO;
         private NavMeshAgent _agent;
         private Transform _transform;
+        private LayerMask _playerLayer;
 
         private Vector3 _target;
+        private float _checkAgroTimer;
 
         public Patrolling(MeeleMinionBB blackBoard)
         {
             _blackBoard = blackBoard;
+            _enemySO = blackBoard.enemySO;
             _agent = blackBoard.agent;
             _transform = blackBoard.cachedTransform;
+            _playerLayer = blackBoard.playerLayer;
         }
 
         public void SateUpdate()
         {
-            //Check for player
-            if ((_transform.position - _target).magnitude < 1) 
+            if(_checkAgroTimer <= 0) //Probably make a different class and add it in the bb
+            {
+                Collider[] colliders = Physics.OverlapSphere(_transform.position, _enemySO.aggroRange);
+
+                if (colliders.Length > 0)
+                {
+                    foreach (var colider in colliders)
+                    {
+                        if (colider.CompareTag("Player"))
+                        {
+                            _blackBoard.playerTarget = colider.transform;
+                            ChangeState(_blackBoard.chaseState);
+                            return;
+                        }
+                    }
+                }
+                _checkAgroTimer += 0.35f;
+            }
+            else
+            {
+                _checkAgroTimer -= Time.deltaTime;
+            }
+
+            if (Vector3.Distance(_transform.position, _target) < 1) 
             {
                 ChangeState(_blackBoard.waitState);
                 return;
