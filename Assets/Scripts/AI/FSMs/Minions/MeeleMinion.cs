@@ -8,10 +8,11 @@ namespace DangerousPenguin.AI
     public class MeeleMinion : FSM
     {
         //Posibly make a strcut of the most common components
-        //Change the conections to be handled by someone and the state by an inteface
+        //Posibly change the conections to be handled by someone and the state by an inteface
+        //NEEDS REFACTOR SO THAT I DONT NEED TO MAKE A NEW CLASS
 
         [field: SerializeField] public FSM fsm { get; private set; }
-        [field: SerializeField] public EnemySO minionSO { get; private set; }
+        [field: SerializeField] public EnemySO enemySO { get; private set; }
         [field: SerializeField] public LayerMask playerLayer { get; private set; }
 
         public IState waitState { get; private set; }
@@ -23,7 +24,7 @@ namespace DangerousPenguin.AI
         {
             cachedTransform = transform;
 
-            waitState = new Waiting(this,minionSO,agent,cachedTransform,playerLayer);
+            waitState = new WaitState(this,enemySO,agent,cachedTransform,playerLayer);
 
             fsm.Init(waitState);
         }
@@ -31,16 +32,16 @@ namespace DangerousPenguin.AI
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, minionSO.aggroRange);
+            Gizmos.DrawWireSphere(transform.position, enemySO.aggroRange);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, minionSO.attackRange);
+            Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, minionSO.chaseRange);
+            Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
         }
 
         private void Update()
         {
-            _currentState.SateUpdate();
+            _currentState.StateUpdate();
         }
     }
 }

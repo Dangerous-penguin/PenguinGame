@@ -5,9 +5,8 @@ using UnityEngine.AI;
 
 namespace DangerousPenguin.AI
 {
-    public class Waiting : IState
+    public class WaitState : IState
     {
-
         private FSM _fsm;
         private EnemySO _enemySO;
         private NavMeshAgent _agent;
@@ -17,15 +16,16 @@ namespace DangerousPenguin.AI
         private float _waitTimer;
         private float _checkAgroTimer;
 
-        public Waiting(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, LayerMask playerLayer)
+        public WaitState(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, LayerMask playerLayer)
         {
+            _fsm = fsm;
             _enemySO = enemySO;
             _agent = agent;
             _transform = cachedTransform;
             _playerLayer = playerLayer;
         }
 
-        public void SateUpdate()
+        public void StateUpdate()
         {
             if (_checkAgroTimer <= 0) //Probably make a different class and add it in the bb
             {
@@ -37,7 +37,7 @@ namespace DangerousPenguin.AI
                     {
                         if (colider.CompareTag("Player"))
                         {
-                            ChangeState(new Chasing(_fsm,_enemySO,_agent,_transform,_playerLayer,colider.transform));
+                            ChangeState(new ChaseState(_fsm,_enemySO,_agent,_transform,_playerLayer,colider.transform));
                             return;
                         }
                     }
@@ -55,7 +55,7 @@ namespace DangerousPenguin.AI
             }
             else
             {
-                ChangeState(new Patrolling(_fsm,_enemySO,_agent,_transform,_playerLayer));
+                ChangeState(new PatrolState(_fsm,_enemySO,_agent,_transform,_playerLayer));
                 return;
             }
         }

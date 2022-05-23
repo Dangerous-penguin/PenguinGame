@@ -6,7 +6,7 @@ namespace DangerousPenguin.AI
 {
     public interface IState
     {
-        void SateUpdate();
+        void StateUpdate();
 
         void OnStateEnter();
 

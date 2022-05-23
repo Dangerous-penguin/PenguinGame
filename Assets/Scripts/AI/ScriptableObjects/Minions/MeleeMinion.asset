@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTimerMin: 1
   waitTimerMax: 3
-  attackRange: 1.9
-  aggroRange: 6
-  chaseRange: 9
+  attackRange: 4.17
+  aggroRange: 14.5
+  chaseRange: 17.5
   attackCooldown: 2
   attackDamage: 10
   maxHealth: 10
