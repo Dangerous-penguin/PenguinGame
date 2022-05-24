@@ -18,5 +18,7 @@ namespace DangerousPenguin.AI
         public float attackDamage;
 
         public float maxHealth;
+
+        [HideInInspector] public Transform playerTarget;
     }
 }

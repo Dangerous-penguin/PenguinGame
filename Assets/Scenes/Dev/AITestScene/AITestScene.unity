@@ -288,13 +288,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d889e93abc7d9ef4b8d593bcee561f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <fsm>k__BackingField: {fileID: 114576097}
   <enemySO>k__BackingField: {fileID: 11400000, guid: 76d6dc6447c2fd34fa4def51194068cd,
     type: 2}
   <playerLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
   <agent>k__BackingField: {fileID: 114576096}
+  _targetPlayer: {fileID: 0}
+  agroCheckTime: 0.35
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &860000448
 Transform:
   m_ObjectHideFlags: 0
@@ -656,7 +657,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1041882882}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &860000449
 MonoBehaviour:
@@ -670,13 +671,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d889e93abc7d9ef4b8d593bcee561f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <fsm>k__BackingField: {fileID: 860000449}
   <enemySO>k__BackingField: {fileID: 11400000, guid: 76d6dc6447c2fd34fa4def51194068cd,
     type: 2}
   <playerLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
   <agent>k__BackingField: {fileID: 860000450}
+  _targetPlayer: {fileID: 0}
+  agroCheckTime: 0.35
 --- !u!195 &860000450
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -793,8 +795,8 @@ Transform:
   - {fileID: 1211561529}
   - {fileID: 1455909058}
   - {fileID: 114576092}
-  - {fileID: 1832775433}
   - {fileID: 860000448}
+  - {fileID: 1832775433}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -950,6 +952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767627346728584002, guid: 5b020c803a159394bbe7b7c0f03cd87d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767627346728584002, guid: 5b020c803a159394bbe7b7c0f03cd87d,
         type: 3}
@@ -1347,7 +1354,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1041882882}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1832775434
 MonoBehaviour:

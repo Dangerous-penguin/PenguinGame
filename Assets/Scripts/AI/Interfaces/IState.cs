@@ -11,7 +11,5 @@ namespace DangerousPenguin.AI
         void OnStateEnter();
 
         void OnStateExit();
-
-        void ChangeState(IState newState);
     }
 }
