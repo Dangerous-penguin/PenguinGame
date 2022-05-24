@@ -23,7 +23,6 @@ namespace DangerousPenguin.AI
                 ChangeState(transition.nextState);
             }
             _currentState?.StateUpdate();
-            Debug.Log(_currentState);
         }
 
         public void ChangeState(IState newState)
