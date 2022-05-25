@@ -44,7 +44,7 @@ namespace DangerousPenguin.Input
                     ""id"": ""1ebc5eab-1379-4786-b901-2a4ea63de94b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.2),Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -91,7 +91,7 @@ namespace DangerousPenguin.Input
                     ""name"": """",
                     ""id"": ""613b3474-9628-4059-885a-0fc9333f5a4a"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press,Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PrimaryAttack"",
