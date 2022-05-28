@@ -11,6 +11,7 @@ namespace DangerousPenguin.AI
         private FSM _fsm;
         private EnemySO _enemySO;
         private NavMeshAgent _agent;
+        private Func<Transform> GetTarget;
 
         private float _attackTimer;
 
@@ -19,6 +20,7 @@ namespace DangerousPenguin.AI
             _fsm = fsm;
             _enemySO = enemySO;
             _agent = agent;
+            this.GetTarget = GetTarget;
         }
 
         public void StateUpdate()

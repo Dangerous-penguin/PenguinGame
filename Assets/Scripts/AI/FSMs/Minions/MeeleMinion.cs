@@ -17,7 +17,7 @@ namespace DangerousPenguin.AI
         public Transform cachedTransform { get; private set;}
         public Transform _targetPlayer;
 
-        public float agroCheckTime; //I dont like having these here
+        public float agroCheckTime; //I dont like having these here maybe passing func from interfaces
         private float _checkAgroTimer;
         
         public float waitTime => UnityEngine.Random.Range(enemySO.waitTimerMin, enemySO.waitTimerMax);
@@ -52,7 +52,7 @@ namespace DangerousPenguin.AI
 
             //_fsm.AddAnyStateTransition(chaseState,TEMP);
 
-            bool CheckForPlayer(float range) //Move this somewhere else as a static method??
+            bool CheckForPlayer(float range) //Move this somewhere else as a static method or come from another interface/class
             {
 
                 _targetPlayer = null;
@@ -111,6 +111,7 @@ namespace DangerousPenguin.AI
             Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
+            Gizmos.color = Color.cyan;
         }
 
         private void Update()
