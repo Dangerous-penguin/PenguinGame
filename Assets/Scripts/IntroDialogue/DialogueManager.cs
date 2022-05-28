@@ -84,16 +84,16 @@ namespace DangerousPenguin
 
         public void Next()
         {
-            textMultiplier += 6f/_dialogueData.Length;
-            speedMultiplier += .4f/_dialogueData.Length;
-            sinMultiplier += 2f/_dialogueData.Length;
-
             if(_characterIndex < _textToWrite.Length)
             {
                 textBox.text = _textToWrite;
                 _characterIndex = _textToWrite.Length;
                 return;
             }
+
+            textMultiplier += 6f/_dialogueData.Length;
+            speedMultiplier += .4f/_dialogueData.Length;
+            sinMultiplier += 2f/_dialogueData.Length;
 
             textBox.text = "";
             _characterIndex = 0;
