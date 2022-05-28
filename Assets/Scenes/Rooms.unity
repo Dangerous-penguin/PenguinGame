@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &151131825
+--- !u!1 &1309880707
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,55 +131,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 151131827}
-  - component: {fileID: 151131826}
+  - component: {fileID: 1309880709}
+  - component: {fileID: 1309880708}
   m_Layer: 0
-  m_Name: Room builder
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &151131826
+--- !u!114 &1309880708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151131825}
+  m_GameObject: {fileID: 1309880707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec10c6b56f4bebb4a84671a6e033be86, type: 3}
+  m_Script: {fileID: 11500000, guid: ba6189e8e037400488ff9dc53d6b2ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 20
-  height: 20
-  SideWall: {fileID: 3257163086378037775, guid: 90f51ec874c48f244a9c688afc5fe824,
-    type: 3}
-  TopWall: {fileID: 2966485882189137340, guid: 647d6b4ccb1506341818d156d26c83fc, type: 3}
-  BottomWall: {fileID: 6285672777537296281, guid: 74b5363c21781e2419568347a7e286b7,
-    type: 3}
-  TopLeftCorner: {fileID: 814222965953618668, guid: 32dc9fa7508b5e74aa9eee14dc5629ba,
-    type: 3}
-  TopRightCorner: {fileID: 7624072593342933868, guid: 45c7d71cd654867498e22c325d136ed7,
-    type: 3}
-  BottomRightCorner: {fileID: 530504070840167631, guid: 94e6e8b57d752f648978571b9871236c,
-    type: 3}
-  BottomLeftCorner: {fileID: 6357726143554343068, guid: 7a5bee00da5247a48995e1023d5b6dca,
-    type: 3}
-  floorTile: {fileID: 0}
-  EntryStairs: {fileID: 8806800229567743794, guid: 29e5edf67fee6124fa6b1ddd6d157c5a,
-    type: 3}
-  ExitStairs: {fileID: 1530994494710350385, guid: 4523ede6bb80d6a429b84fc8dd371801,
-    type: 3}
-  spacing: 0
---- !u!4 &151131827
+  level: {fileID: 2789804719558278357, guid: ab81e81f2c365be4ca63ceca73546237, type: 3}
+--- !u!4 &1309880709
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151131825}
+  m_GameObject: {fileID: 1309880707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
