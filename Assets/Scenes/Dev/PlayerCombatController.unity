@@ -396,6 +396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 962614102, guid: 5b020c803a159394bbe7b7c0f03cd87d, type: 3}
+      propertyPath: avoidancePriority
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4063226346557192472, guid: 5b020c803a159394bbe7b7c0f03cd87d,
         type: 3}
       propertyPath: cameraHandle
@@ -590,7 +594,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405352740}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.8
   m_Speed: 3.5
@@ -807,9 +811,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a76e40b10f3f9499d884b8c3b40c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 940659626}
+  abilities:
+  - {fileID: 11400000, guid: 1c6b39ae2a402f440b81951cc6d8ae2b, type: 2}
+  - {fileID: 11400000, guid: 3bb46ad77288e874884c135686bd1f35, type: 2}
+  - {fileID: 11400000, guid: f588bee3327cb424b91867e93ecd3ae2, type: 2}
+  - {fileID: 11400000, guid: 6f9ddc35508f0a64ca3b7a87326b143f, type: 2}
+  - {fileID: 11400000, guid: 61b604ef8ea093443935620314421e4b, type: 2}
+  navMeshAgent: {fileID: 1744475385}
+  animator: {fileID: 940659626}
+  player: {fileID: 1744475387}
   strongAttackTime: 1
   fastAttackTime: 0.5
+--- !u!195 &1744475385 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 962614102, guid: 5b020c803a159394bbe7b7c0f03cd87d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1201525080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1744475387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4063226346557192472, guid: 5b020c803a159394bbe7b7c0f03cd87d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1201525080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744475383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45279626ab610c442b1fe8bf5a88f7ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1831884914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6686670424736528325, guid: 5b020c803a159394bbe7b7c0f03cd87d,
