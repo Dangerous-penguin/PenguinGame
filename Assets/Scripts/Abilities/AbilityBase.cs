@@ -8,8 +8,10 @@ public abstract class AbilityBase : ScriptableObject
 {
     public abstract AttackType Ability      { get; }
 
-    public float Cooldown          => cooldown;
-    public float CooldownRemaining => cooldown - (Time.time - _lastTimeUsed);
+    public float Cooldown             => cooldown;
+    public bool  OnCooldown           => CooldownRemaining >= 0;
+    public float CooldownRemaining    => Cooldown - (Time.time - _lastTimeUsed);
+    public float CooldownRemainingPct => Mathf.Clamp01(CooldownRemaining / Cooldown);
     
     [SerializeField] private float cooldown;
     [SerializeField] private float timeToHit;

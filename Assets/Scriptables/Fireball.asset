@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   cooldown: 3
+  timeToHit: 0.7
   projectile: {fileID: 8449733858927258810, guid: fff85eac35679bf40941b564c5b18a46,
     type: 3}
