@@ -413,11 +413,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: 5f230940d05dd444d9fb4a7f6becea68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc9ae90ed0922854b906167897402fb6, type: 2}
+    - target: {fileID: -4396642182433536433, guid: 5f230940d05dd444d9fb4a7f6becea68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a77dbd665aa3634fa35ba00d75f05dd, type: 2}
+    - target: {fileID: -1211031471028672492, guid: 5f230940d05dd444d9fb4a7f6becea68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8c387e1ff9cd674bbe3ec81fa0613de, type: 2}
     - target: {fileID: 919132149155446097, guid: 5f230940d05dd444d9fb4a7f6becea68,
         type: 3}
       propertyPath: m_Name
       value: PenguinWithSmoothHands
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 5f230940d05dd444d9fb4a7f6becea68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc9ae90ed0922854b906167897402fb6, type: 2}
+    - target: {fileID: 4351411106470829699, guid: 5f230940d05dd444d9fb4a7f6becea68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a77dbd665aa3634fa35ba00d75f05dd, type: 2}
+    - target: {fileID: 5797384429611982230, guid: 5f230940d05dd444d9fb4a7f6becea68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a77dbd665aa3634fa35ba00d75f05dd, type: 2}
     - target: {fileID: 8879528566716807029, guid: 5f230940d05dd444d9fb4a7f6becea68,
         type: 3}
       propertyPath: m_LocalRotation.w
