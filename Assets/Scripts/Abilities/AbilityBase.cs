@@ -10,10 +10,12 @@ public abstract class AbilityBase : ScriptableObject
 
     public float Cooldown          => cooldown;
     public float CooldownRemaining => cooldown - (Time.time - _lastTimeUsed);
-
+    
     [SerializeField] private float cooldown;
+    [SerializeField] private float timeToHit;
 
     private float _lastTimeUsed = float.MinValue;
+    private bool  _hit           = false;
 
     private void OnEnable()
     {
@@ -25,6 +27,7 @@ public abstract class AbilityBase : ScriptableObject
         if (CooldownRemaining <= 0)
         {
             Debug.Log($"Doing the {GetType().Name} attack");
+            _hit           = false;
             _lastTimeUsed = Time.time;
             if(player.OnAttackStart(Ability, this))
                 Perform(player);
@@ -39,8 +42,16 @@ public abstract class AbilityBase : ScriptableObject
 
     public virtual void OnUpdate(PlayerCombatController player)
     {
+        if (!_hit && (timeToHit - (Time.time - _lastTimeUsed) <= 0))
+        {
+            player.OnAttackHit(this);
+            OnHit(player);
+            _hit = true;
+        }
         //do nothing
     }
+
+    protected virtual void OnHit(PlayerCombatController player){}
 }
 
 }

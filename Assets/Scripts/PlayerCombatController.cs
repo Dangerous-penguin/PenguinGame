@@ -203,6 +203,11 @@ public class PlayerCombatController : MonoBehaviour
     {
         OnAttackEnd();
     }
+
+    public void OnAttackHit(AbilityBase ability)
+    {
+        
+    }
 }
 
 public enum AttackType
