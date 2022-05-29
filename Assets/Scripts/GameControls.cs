@@ -37,6 +37,42 @@ namespace DangerousPenguin.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ebc5eab-1379-4786-b901-2a4ea63de94b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.2),Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSkill1"",
+                    ""type"": ""Button"",
+                    ""id"": ""f1757d33-2685-48a5-add3-08d448506533"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSkill2"",
+                    ""type"": ""Button"",
+                    ""id"": ""30ee4a96-ee43-4ddc-bb57-953e7a1e3bfd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSkill3"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2f271ad-f280-476e-8a19-b80766256c7b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -50,6 +86,50 @@ namespace DangerousPenguin.Input
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""613b3474-9628-4059-885a-0fc9333f5a4a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b183530f-dcca-4edc-8e41-3f38878add9a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSkill1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d440a852-370c-480f-aec4-a92b772667d3"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSkill2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2829e8be-ad31-4de5-8f17-0501dcbbbef4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSkill3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -59,6 +139,10 @@ namespace DangerousPenguin.Input
             // Game
             m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
             m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
+            m_Game_PrimaryAttack = m_Game.FindAction("PrimaryAttack", throwIfNotFound: true);
+            m_Game_UseSkill1 = m_Game.FindAction("UseSkill1", throwIfNotFound: true);
+            m_Game_UseSkill2 = m_Game.FindAction("UseSkill2", throwIfNotFound: true);
+            m_Game_UseSkill3 = m_Game.FindAction("UseSkill3", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -119,11 +203,19 @@ namespace DangerousPenguin.Input
         private readonly InputActionMap m_Game;
         private IGameActions m_GameActionsCallbackInterface;
         private readonly InputAction m_Game_Move;
+        private readonly InputAction m_Game_PrimaryAttack;
+        private readonly InputAction m_Game_UseSkill1;
+        private readonly InputAction m_Game_UseSkill2;
+        private readonly InputAction m_Game_UseSkill3;
         public struct GameActions
         {
             private @GameControls m_Wrapper;
             public GameActions(@GameControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Game_Move;
+            public InputAction @PrimaryAttack => m_Wrapper.m_Game_PrimaryAttack;
+            public InputAction @UseSkill1 => m_Wrapper.m_Game_UseSkill1;
+            public InputAction @UseSkill2 => m_Wrapper.m_Game_UseSkill2;
+            public InputAction @UseSkill3 => m_Wrapper.m_Game_UseSkill3;
             public InputActionMap Get() { return m_Wrapper.m_Game; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -136,6 +228,18 @@ namespace DangerousPenguin.Input
                     @Move.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMove;
+                    @PrimaryAttack.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPrimaryAttack;
+                    @PrimaryAttack.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPrimaryAttack;
+                    @PrimaryAttack.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPrimaryAttack;
+                    @UseSkill1.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill1;
+                    @UseSkill1.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill1;
+                    @UseSkill1.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill1;
+                    @UseSkill2.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill2;
+                    @UseSkill2.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill2;
+                    @UseSkill2.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill2;
+                    @UseSkill3.started -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill3;
+                    @UseSkill3.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill3;
+                    @UseSkill3.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnUseSkill3;
                 }
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
@@ -143,6 +247,18 @@ namespace DangerousPenguin.Input
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
+                    @PrimaryAttack.started += instance.OnPrimaryAttack;
+                    @PrimaryAttack.performed += instance.OnPrimaryAttack;
+                    @PrimaryAttack.canceled += instance.OnPrimaryAttack;
+                    @UseSkill1.started += instance.OnUseSkill1;
+                    @UseSkill1.performed += instance.OnUseSkill1;
+                    @UseSkill1.canceled += instance.OnUseSkill1;
+                    @UseSkill2.started += instance.OnUseSkill2;
+                    @UseSkill2.performed += instance.OnUseSkill2;
+                    @UseSkill2.canceled += instance.OnUseSkill2;
+                    @UseSkill3.started += instance.OnUseSkill3;
+                    @UseSkill3.performed += instance.OnUseSkill3;
+                    @UseSkill3.canceled += instance.OnUseSkill3;
                 }
             }
         }
@@ -150,6 +266,10 @@ namespace DangerousPenguin.Input
         public interface IGameActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnPrimaryAttack(InputAction.CallbackContext context);
+            void OnUseSkill1(InputAction.CallbackContext context);
+            void OnUseSkill2(InputAction.CallbackContext context);
+            void OnUseSkill3(InputAction.CallbackContext context);
         }
     }
 }

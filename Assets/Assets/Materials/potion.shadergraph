@@ -618,7 +618,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": -1.2000000476837159,
-        "y": 1.0
+        "y": 1.2000000476837159
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -1118,7 +1118,7 @@
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "3387d3344b504ca1a3defd1a53d35e16",
     "m_ActiveSubTarget": {
-        "m_Id": "ba3625d1ed53485ebf1889dc54de089a"
+        "m_Id": "daffc00dac8448bb89676d829bb93b83"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
@@ -2896,12 +2896,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
-    "m_ObjectId": "ba3625d1ed53485ebf1889dc54de089a"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "bea86c40e8374afcaca6d4e5e2108c56",
     "m_Id": 0,
@@ -3091,6 +3085,12 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
+    "m_ObjectId": "daffc00dac8448bb89676d829bb93b83"
 }
 
 {

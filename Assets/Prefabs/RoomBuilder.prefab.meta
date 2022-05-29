@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Assets/Materials/PenguinBlack.mat.meta.orig.meta
+guid: 9395053d6e8e3f84d8fbd3469f620e38
+DefaultImporter:
+========
 guid: ab81e81f2c365be4ca63ceca73546237
 PrefabImporter:
+>>>>>>>> origin/development:Assets/Prefabs/RoomBuilder.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

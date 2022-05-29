@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Player.prefab.orig.meta
+guid: 0bdb84ac685269c48ae4ac5fd3dcb83f
+========
 guid: abe2aa96d69a7b04f809798548cdeac1
+>>>>>>>> origin/development:Assets/Scenes/Enemy HP Bar.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

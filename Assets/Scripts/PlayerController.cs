@@ -65,6 +65,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (!_canMove)
+        {
+            //player is attacking
+            _moving = false;
+            return; 
+        }
+
         var magnitude                 = (_moveTargetCandidate - transform.position).magnitude;
         if (magnitude < 0.2f) _moving = false;
 
@@ -175,6 +182,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.DrawLine(_path.corners[i], _path.corners[i + 1], (i % 2 == 0) ? Color.red : Color.green);
         }
+    }
+
+    private bool _canMove = true;
+
+    public void BlockMovement()
+    {
+        _canMove = false;
+    }
+
+    public void ResumeMovement()
+    {
+        _canMove = true;
+    }
+
+    public void RotateTowardsCursor()
+    {
+        if (!GetMouseLocation(out var mousePos)) return;
+        var lookAt = (mousePos - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(lookAt);
     }
 }
 
