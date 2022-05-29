@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8acea31da249afbffee787f6031013, type: 3}
   m_Name: Slap
   m_EditorClassIdentifier: 
-  val: 0
-  test: 0
+  cooldown: 0
+  timeToHit: 0.3

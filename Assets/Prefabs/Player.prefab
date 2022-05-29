@@ -201,13 +201,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f9ddc35508f0a64ca3b7a87326b143f, type: 2}
   - {fileID: 11400000, guid: f588bee3327cb424b91867e93ecd3ae2, type: 2}
   - {fileID: 11400000, guid: 61b604ef8ea093443935620314421e4b, type: 2}
-  navMeshAgent: {fileID: 0}
-  animator: {fileID: 0}
-  player: {fileID: 0}
+  navMeshAgent: {fileID: 962614102}
+  animator: {fileID: 99131052656601736}
+  player: {fileID: 4063226346557192472}
+  baseDamage: 10
+  strongDamage: 25
+  meleeRadius: 2
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   horns: {fileID: 0}
   fieryEyes: {fileID: 0}
-  strongAttackTime: 1
-  fastAttackTime: 0.5
 --- !u!136 &2275758980326520611
 CapsuleCollider:
   m_ObjectHideFlags: 0

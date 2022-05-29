@@ -8,17 +8,14 @@ namespace DangerousPenguin
     public class EnemyHealth : MonoBehaviour
     {
 
-        private float fillAmount = 1f;
-        private Slider slider;
+        private                  float  fillAmount = 1f;
+        
+        [SerializeField] private Health healthComponent;
+        [SerializeField] private Slider slider;
 
 
         //[SerializeField] private Health healthComponent;
      
-        void Start()
-        {
-            slider = GetComponent<Slider>();
-
-        }
 
 
         void Update()
@@ -32,11 +29,18 @@ namespace DangerousPenguin
             if(fillAmount <= 0){
                 Destroy(gameObject);
             }
+            
+            if (healthComponent)
+            {
+                var (cur, max) = healthComponent.CurrentHealth;
+                fillAmount     = cur / max;
+            }
+            
             HealthChanger();
         }
 
         void HealthChanger (){
-            slider.value -= fillAmount;
+            slider.value = 1-fillAmount;
         }
     }
 }
