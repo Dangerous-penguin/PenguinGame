@@ -46,16 +46,16 @@ public abstract class AbilityBase : ScriptableObject
     {
         if (!_hit && (timeToHit - (Time.time - _lastTimeUsed) <= 0))
         {
+            _hit = true;
             player.OnAttackHit(this);
             OnHit(player);
-            _hit = true;
         }
         //do nothing
     }
 
     protected virtual void OnHit(PlayerCombatController player)
     {
-        player.OnAttackHit(this);
+
     }
 }
 

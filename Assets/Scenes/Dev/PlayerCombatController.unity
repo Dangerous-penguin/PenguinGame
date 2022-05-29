@@ -554,9 +554,19 @@ PrefabInstance:
       objectReference: {fileID: 580909478}
     - target: {fileID: 5247309818022152079, guid: 5b020c803a159394bbe7b7c0f03cd87d,
         type: 3}
+      propertyPath: meleeRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247309818022152079, guid: 5b020c803a159394bbe7b7c0f03cd87d,
+        type: 3}
       propertyPath: navMeshAgent
       value: 
       objectReference: {fileID: 2120409397}
+    - target: {fileID: 5247309818022152079, guid: 5b020c803a159394bbe7b7c0f03cd87d,
+        type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5767627346728584002, guid: 5b020c803a159394bbe7b7c0f03cd87d,
         type: 3}
       propertyPath: m_Name
@@ -645,7 +655,8 @@ GameObject:
   - component: {fileID: 1405352742}
   - component: {fileID: 1405352746}
   - component: {fileID: 1405352747}
-  m_Layer: 0
+  - component: {fileID: 1405352748}
+  m_Layer: 7
   m_Name: DummyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,6 +779,21 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1405352748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405352740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f02f87449f97241b64e33de68fdc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  healthRegen: 500
+  healthRegenTick: 1
 --- !u!1 &1414324713
 GameObject:
   m_ObjectHideFlags: 0

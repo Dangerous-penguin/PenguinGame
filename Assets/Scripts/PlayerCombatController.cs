@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DangerousPenguin.Abilities;
 using DangerousPenguin.Input;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -19,19 +20,29 @@ public class PlayerCombatController : MonoBehaviour
     private static readonly int AttackTrigger     = Animator.StringToHash("Attack");
     private static readonly int MagicAttack       = Animator.StringToHash("MagicAttack");
     private static readonly int DashAttack        = Animator.StringToHash("Dash");
-    
+
     private GameControls _input;
     private AbilityBase  _currentAbility;
+    private bool         _attacking = false;
+
 
     [SerializeField] private List<AbilityBase> abilities;
     [SerializeField] private NavMeshAgent      navMeshAgent;
     [SerializeField] private Animator          animator;
     [SerializeField] private PlayerController  player;
 
+    [Header("Combat")]
+    [SerializeField] private float baseDamage = 10.0f;
+
+    [SerializeField] private float     strongDamage = 25.0f;
+    [SerializeField] private float     meleeRadius  = 2.0f;
+    [SerializeField] private LayerMask enemyLayerMask;
+
     [Header("Demonic parts")]
     [SerializeField] private GameObject horns;
+
     [SerializeField] private GameObject fieryEyes;
-    
+
 
     private void Awake()
     {
@@ -87,25 +98,6 @@ public class PlayerCombatController : MonoBehaviour
     {
         if (_attacking)
         {
-            // var attackTime = Time.time - _attackTimeStart;
-            // if (_isStrong)
-            // {
-            //     if (attackTime > strongAttackTime)
-            //     {
-            //         //Debug.Log("Strong attack!");
-            //         _attacking = false;
-            //     }
-            // }
-            // else
-            // {
-            //     if (attackTime > fastAttackTime)
-            //     {
-            //         Debug.Log("Fast attack!");
-            //         _attacking = false;
-            //     }
-            // }
-            //
-            //
             _currentAbility.OnUpdate(this);
         }
     }
@@ -120,31 +112,15 @@ public class PlayerCombatController : MonoBehaviour
         if (obj.interaction is TapInteraction) DoFastAttack();
     }
 
-    private bool  _attacking = false;
-    private bool  _isStrong  = false;
-    private float _attackTimeStart;
-
-    [SerializeField] private float strongAttackTime = 1.0f;
-    [SerializeField] private float fastAttackTime   = 0.5f;
 
     private void DoPrimaryAttack()
     {
         abilities[1].Execute(this);
-        
-        // if (_attacking) return;
-        // Debug.Log("Starting attack!");
-        //
-        // animator.SetTrigger(AttackTrigger);
-        // _attacking       = true;
-        // _isStrong        = true;
-        // _attackTimeStart = Time.time;
     }
 
     private void DoFastAttack()
     {
         abilities[0].Execute(this);
-        // animator.SetTrigger(FastAttackTrigger);
-        // _isStrong = false;
     }
 
     public bool OnAttackStart(AttackType attack, AbilityBase ability)
@@ -159,21 +135,18 @@ public class PlayerCombatController : MonoBehaviour
             }
         }
 
-        //navMeshAgent.enabled = false; // allow moving without collisions
-        _attacking           = true;
-        _attackTimeStart     = Time.time;
-        _currentAbility      = ability;
+        //navMeshAgent.enabled = false; // allow moving without collisions?
+        _attacking      = true;
+        _currentAbility = ability;
         player.BlockMovement();
         player.RotateTowardsCursor();
-        
+
         switch (attack)
         {
             case AttackType.FastAttack:
-                _isStrong = false;
                 animator.SetTrigger(FastAttackTrigger);
                 break;
             case AttackType.StrongAttack:
-                _isStrong = true;
                 animator.SetTrigger(AttackTrigger);
                 break;
             case AttackType.Dash:
@@ -212,7 +185,36 @@ public class PlayerCombatController : MonoBehaviour
 
     public void OnAttackHit(AbilityBase ability)
     {
-        
+        var damage = 0.0f;
+        switch (ability.Ability)
+        {
+            case AttackType.FastAttack:
+                damage = baseDamage;
+                break;
+            case AttackType.StrongAttack:
+                damage = strongDamage;
+                break;
+            default:
+                //other skills are handled by special prefabs
+                return;
+        }
+
+        var hits = Physics.OverlapSphere(transform.position, meleeRadius, enemyLayerMask);
+        foreach (var hit in hits)
+        {
+            if(Vector3.Dot(hit.transform.position - transform.position, transform.forward)<0.2) continue;
+            var health = hit.GetComponent<Health>();
+            if(health == null) continue;
+            Debug.Log($"Attacking {hit.gameObject} for {damage}");
+            health.TakeDamage(damage);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color=Color.red;
+        Gizmos.DrawWireSphere(transform.position, meleeRadius);
+        Gizmos.DrawRay(transform.position, transform.forward);
     }
 }
 
