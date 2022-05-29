@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cf3e47668e4d5f87d8ffe14960d0e4, type: 3}
   m_Name: Power Slap
   m_EditorClassIdentifier: 
-  val: 0
+  cooldown: 0
+  timeToHit: 0.8

@@ -62,7 +62,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothnees: 1
-    - _TimeSpeed: 0.2
+    - _Smoothnees: 0.8
+    - _TimeSpeed: 0.1
     m_Colors: []
   m_BuildTextureStacks: []

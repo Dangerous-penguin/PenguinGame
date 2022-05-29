@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ab803e518e3ee4080df0ff4757e1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timePerCharacter: 0.065
+  _timePerCharacter: 0.04
   _dialogueData:
   - You failed them
   - You were not strong enough
@@ -250,7 +250,7 @@ MonoBehaviour:
   - I can offer you that
   - Work for me, offer your soul and i shald grant you power
   - I SHALL GIVE YOU MY STRENGHT TO TAKE REVENGE ON THOSE WHO WRONGED YOU
-  - YOUR DEAD WILL ONLY BE THE BEGINING OF THEIR DOOM
+  - YOUR DEATH WILL ONLY BE THE BEGINING OF THEIR DOOM
   - WHAT IS YOUR ANSWER LITTLE ONE
   - WILL YOU ACCEPT THIS POWER
   - WILL YOU LET YOUR SOUL BE ENGOLFED BY CHAOS
