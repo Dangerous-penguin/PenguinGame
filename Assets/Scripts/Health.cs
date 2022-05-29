@@ -12,6 +12,7 @@ namespace DangerousPenguin
         [SerializeField] private float maxHealth       = 100.0f;
         [SerializeField] private float healthRegen     = 0.0f;
         [SerializeField] private float healthRegenTick = 1.0f;
+        [SerializeField] private GameObject gameOverCanvas;
         
         private float currentHealth;
         private float lastRegenTick;
@@ -36,6 +37,7 @@ namespace DangerousPenguin
             currentHealth = Mathf.Clamp(currentHealth -dmg, -1, maxHealth);
             if (currentHealth <= 0)
             {
+                gameOverCanvas?.SetActive(true);
                 Destroy(this.gameObject);
                 Debug.LogWarning("You died");
             }
