@@ -14,6 +14,7 @@ namespace DangerousPenguin.AI
         [field: SerializeField] public LayerMask playerLayer { get; private set;}
 
         [field: SerializeField] public NavMeshAgent agent { get; private set;}
+        [field: SerializeField] public Animator animator { get; private set;}
         public Transform cachedTransform { get; private set;}
         public Transform _targetPlayer;
 
@@ -32,10 +33,10 @@ namespace DangerousPenguin.AI
 
             _fsm = new FSM();
 
-            State_Wait waitState = new State_Wait(_fsm,agent);
-            State_Patrol patrolState = new State_Patrol(_fsm,agent,cachedTransform);
-            State_Chase chaseState = new State_Chase(_fsm,enemySO,agent,cachedTransform,GetPlayer);
-            State_MeleeAtack attackState = new State_MeleeAtack(_fsm, enemySO,agent,GetPlayer);
+            State_Wait waitState = new State_Wait(_fsm,agent,animator);
+            State_Patrol patrolState = new State_Patrol(_fsm,agent,cachedTransform,animator);
+            State_Chase chaseState = new State_Chase(_fsm,enemySO,agent,cachedTransform,animator,GetPlayer);
+            State_MeleeAtack attackState = new State_MeleeAtack(_fsm, enemySO,agent,animator,GetPlayer);
 
             void AddTransition(IState from, IState to, Func<bool> when) //Move this somewhere else as a static method??
             {
