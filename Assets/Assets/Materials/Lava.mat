@@ -102,6 +102,7 @@ Material:
     - _RippleDensity: 30.11
     - _RippleSlimness: 1.8
     - _RippleSpeed: 1.87
+    - _Scale: 0.05
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -113,7 +114,7 @@ Material:
     - _BaseColor: {r: 1, g: 0.35102272, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RippleColor: {r: 1.7131807, g: 0.3967366, b: 0, a: 0}
+    - _RippleColor: {r: 8.47419, g: 2.0409043, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5910563010688959410
