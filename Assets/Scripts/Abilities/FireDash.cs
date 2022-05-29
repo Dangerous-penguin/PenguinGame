@@ -19,11 +19,6 @@ public class FireDash : Dash
         effect.player = player.transform;
     }
     
-    protected override void OnHit(PlayerCombatController player)
-    {
-        
-    }
-
 
 }
 

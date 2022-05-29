@@ -57,6 +57,7 @@ public class Blaze : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!(Time.time - _lastTick > damageTick)) return;
+        if (other.CompareTag("Player")) return;
         
         var unit = other.gameObject.GetComponent<Health>();
         if(unit) unitsToAttack.Add(unit);

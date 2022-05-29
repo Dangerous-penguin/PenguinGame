@@ -53,7 +53,10 @@ public abstract class AbilityBase : ScriptableObject
         //do nothing
     }
 
-    protected virtual void OnHit(PlayerCombatController player){}
+    protected virtual void OnHit(PlayerCombatController player)
+    {
+        player.OnAttackHit(this);
+    }
 }
 
 }
