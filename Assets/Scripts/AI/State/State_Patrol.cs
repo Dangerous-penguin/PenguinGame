@@ -10,12 +10,14 @@ namespace DangerousPenguin.AI
         private FSM _fsm;
         private NavMeshAgent _agent;
         private Transform _transform;
+        private Animator _animator;
 
 
-        public State_Patrol(FSM fsm, NavMeshAgent agent, Transform cachedTransform)
+        public State_Patrol(FSM fsm, NavMeshAgent agent, Transform cachedTransform, Animator animator)
         {
             _fsm = fsm;
             _agent = agent;
+            _animator = animator;
             _transform = cachedTransform;
         }
 
@@ -27,12 +29,14 @@ namespace DangerousPenguin.AI
         {
             GetNewPosition();
             _agent.isStopped = false;
+            _animator.SetBool("IsMoving",true);
         }
 
         public void OnStateExit()
         {
             _agent.SetDestination(_transform.position);
             _agent.isStopped = true;
+            _animator.SetBool("IsMoving",false);
         }
 
         private void GetNewPosition()
