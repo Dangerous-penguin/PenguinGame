@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8720075794053573840}
   - component: {fileID: 5896551012367963546}
   - component: {fileID: 6985500589954871566}
+  - component: {fileID: 4761025812134024011}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4272182446580506264, guid: f7300d1eb63b9434482abe4fc241580d, type: 3}
+  - {fileID: 2100000, guid: 3b1982a2e2179664ea392b5b8ec15e22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4761025812134024011
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555563183903195115}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 1.4150001, z: 3.229}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.4150001, z: -3.229}
+  m_TimeToStationary: 0.5
 --- !u!1 &3948497525877512070
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +177,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ff9bdd1b0157f478082dd5b5d59f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 5767627346728584002, guid: 5b020c803a159394bbe7b7c0f03cd87d, type: 3}
-  SpawnPos: {fileID: 692145768221293399}
-  grid: {fileID: 0}
+  player: {fileID: 5767627346728584002, guid: 5b020c803a159394bbe7b7c0f03cd87d, type: 3}
+  spawnPos: {fileID: 692145768221293399}

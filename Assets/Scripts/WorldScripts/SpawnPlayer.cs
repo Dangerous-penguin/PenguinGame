@@ -4,23 +4,29 @@ using UnityEngine;
 
 namespace DangerousPenguin
 {
-    public class SpawnPlayer : MonoBehaviour
+
+public class SpawnPlayer : MonoBehaviour
+{
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform  spawnPos;
+
+    private GridSystem grid;
+
+    private bool flag = false;
+
+    void Awake()
     {
-        public GameObject Player;
-        public Transform SpawnPos;
-        public GridSystem grid;
-
-        private bool flag = false;
-
-        void Awake() {
-            grid = FindObjectOfType<GridSystem>();
-        }
-        void Update()
-        {
-            if(grid.isReadyToSpawn == true && !flag){
-                Instantiate(Player, SpawnPos);
-                flag = true;
-            }
-        }
+        grid = FindObjectOfType<GridSystem>();
     }
+
+    // void Update()
+    // {
+    //     if (grid.isReadyToSpawn == true && !flag)
+    //     {
+    //         Instantiate(player, spawnPos);
+    //         flag = true;
+    //     }
+    // }
+}
+
 }

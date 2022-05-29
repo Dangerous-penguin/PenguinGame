@@ -22,7 +22,7 @@ public class GridSystem : MonoBehaviour
     public GameObject EntryStairs;
     public GameObject ExitStairs;
     public GameObject BarrelOne;
-    public float spacing;
+    public float      spacing;
 
     public bool isReadyToSpawn = false;
 
@@ -38,79 +38,87 @@ public class GridSystem : MonoBehaviour
 
     void Update()
     {
-        
     }
 
-    void SetGrid(){
-        for(int x = 0; x < width; x++){
-            for(int y = 0; y < height; y++){
-                if(x == width-1 || x == 0){
-                    roomGrid[x,y] = 1;
+    void SetGrid()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (x == width - 1 || x == 0)
+                {
+                    roomGrid[x, y] = 1;
                 }
-                else if(y == 0 || y == height -1){
-                    roomGrid[x,y] = 1;
+                else if (y == 0 || y == height - 1)
+                {
+                    roomGrid[x, y] = 1;
                 }
-                else{
-                roomGrid[x,y] = 0;
-                }            
+                else
+                {
+                    roomGrid[x, y] = 0;
+                }
             }
         }
     }
 
-    void PlaceTiles(){
+    void PlaceTiles()
+    {
         SetGrid();
-        for(int x = 0; x < width; x++){
-            for(int y = 0; y < height; y++){
-                if(roomGrid[x,y] == 1){
-
-                    if(x == 0 && y > 0 && y < height -1){
-                        Instantiate(SideWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (roomGrid[x, y] == 1)
+                {
+                    if (x == 0 && y > 0 && y < height - 1)
+                    {
+                        Instantiate(SideWall, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                     }
-                    else if(x == 0 && y == 0){
-                        Instantiate(BottomLeftCorner, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
-
-                    }  
-                    else if(x == 0 && y == height-1){
-                        Instantiate(TopLeftCorner, new Vector3(x*spacing, 0, y*spacing),Quaternion.identity);
-
+                    else if (x == 0 && y == 0)
+                    {
+                        Instantiate(BottomLeftCorner, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                     }
-                    else if(x > 0 && x < width -1 && y == height -1){
-                       Instantiate(TopWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
+                    else if (x == 0 && y == height - 1)
+                    {
+                        Instantiate(TopLeftCorner, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                     }
-                    else if(x == width -1 && y == height -1){
-                        Debug.Log("topright");
-                        Instantiate(TopRightCorner, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
-
+                    else if (x > 0 && x < width - 1 && y == height - 1)
+                    {
+                        Instantiate(TopWall, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                     }
-                    else if(x == width -1 && y != 0){
-                        Instantiate(SideWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
+                    else if (x == width - 1 && y == height - 1)
+                    {
+                        Instantiate(TopRightCorner, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                     }
-                    else if(x == width -1 && y == 0){
-                        Instantiate(BottomRightCorner, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
-
+                    else if (x == width - 1 && y != 0)
+                    {
+                        Instantiate(SideWall, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                     }
-                    else if(x > 0 && y==0){
-                        Instantiate(BottomWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
-                    }  
+                    else if (x == width - 1 && y == 0)
+                    {
+                        Instantiate(BottomRightCorner, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
+                    }
+                    else if (x > 0 && y == 0)
+                    {
+                        Instantiate(BottomWall, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
+                    }
                 }
-                if(roomGrid[x,y] ==0){
-                    Instantiate(floorTile, new Vector3(x * spacing, 0 , y * spacing), Quaternion.identity);
+
+                if (roomGrid[x, y] == 0)
+                {
+                    Instantiate(floorTile, new Vector3(x * spacing, 0, y * spacing), Quaternion.identity);
                 }
             }
+
             isReadyToSpawn = true;
         }
-
-        
     }
 
 
-
-
-    void PlaceStairs(){
-        Instantiate(EntryStairs, new Vector3(5 , 0, 15), Quaternion.identity);
-        Instantiate(ExitStairs, new Vector3(34f ,0, 88f), Quaternion.identity);
+    void PlaceStairs()
+    {
+        // Instantiate(EntryStairs, new Vector3(5, 0, 15), Quaternion.identity);
+        // Instantiate(ExitStairs, new Vector3(34f, 0, 88f), Quaternion.identity);
     }
-
-
-
 }

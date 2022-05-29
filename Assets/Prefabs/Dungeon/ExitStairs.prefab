@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1586617267208546771}
   - component: {fileID: 4527213442747420825}
   - component: {fileID: 1150210670566208525}
+  - component: {fileID: 5757885429819893346}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -93,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4272182446580506264, guid: 68275f582411e4b4aa9557bda929bb9e, type: 3}
+  - {fileID: 2100000, guid: 3b1982a2e2179664ea392b5b8ec15e22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,3 +116,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5757885429819893346
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544343572454669032}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.9870001, y: 2.466, z: 1.988}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2.466, z: 0.001}
+  m_TimeToStationary: 0.5

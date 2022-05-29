@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dev/PlayerController.unity
     guid: d052f8b3a6b1a9749be7b310d928b95d
+  - enabled: 1
+    path: Assets/Scenes/Dev/PlayerCombatController.unity
+    guid: 50813737b17bdd14f9351adf813900dc
   m_configObjects: {}
