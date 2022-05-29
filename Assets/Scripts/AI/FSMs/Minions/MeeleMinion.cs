@@ -47,8 +47,10 @@ namespace DangerousPenguin.AI
             AddTransition(waitState,chaseState,() => CheckForPlayer(enemySO.aggroRange));
             AddTransition(patrolState,waitState,() => HaveArrived(0.1f));
             AddTransition(patrolState,chaseState,() => CheckForPlayer(enemySO.aggroRange));
+            AddTransition(chaseState, waitState, () => _targetPlayer == null);
             AddTransition(chaseState,attackState,() => CheckWithinDistance(cachedTransform, _targetPlayer, enemySO.attackRange));
             AddTransition(chaseState,waitState,() => !PlayerInRadius(enemySO.aggroRange));
+            AddTransition(attackState, waitState, () => _targetPlayer == null);
             AddTransition(attackState,chaseState,() => !CheckWithinDistance(cachedTransform,_targetPlayer,enemySO.attackRange));
 
             //_fsm.AddAnyStateTransition(chaseState,TEMP);
@@ -106,13 +108,22 @@ namespace DangerousPenguin.AI
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, enemySO.aggroRange);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
-            Gizmos.color = Color.cyan;
+            if (!Application.isPlaying && true) return;
+            if(_fsm._currentState.GetType() == typeof(State_Patrol) || _fsm._currentState.GetType() == typeof(State_Wait))
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(transform.position, enemySO.aggroRange);
+            }
+            if (_fsm._currentState.GetType() == typeof(State_Chase) || _fsm._currentState.GetType() == typeof(State_MeleeAtack))
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
+            }
+            if (_fsm._currentState.GetType() == typeof(State_Chase))
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
+            }
         }
 
         private void Update()
