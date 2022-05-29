@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2789804719558278358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2789804719558278356}
+  - component: {fileID: 2789804719558278357}
+  m_Layer: 0
+  m_Name: RoomBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2789804719558278356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789804719558278358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2789804719558278357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789804719558278358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec10c6b56f4bebb4a84671a6e033be86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  height: 20
+  SideWall: {fileID: 2603388714739489424, guid: 10c91b636db6040489756d575cc76699,
+    type: 3}
+  TopWall: {fileID: 4681401999866314468, guid: 632e00b185ef09548964dfb96ed3c5cc, type: 3}
+  BottomWall: {fileID: 4681401999866314468, guid: 632e00b185ef09548964dfb96ed3c5cc,
+    type: 3}
+  TopLeftCorner: {fileID: 814222965953618668, guid: 32dc9fa7508b5e74aa9eee14dc5629ba,
+    type: 3}
+  TopRightCorner: {fileID: 7624072593342933868, guid: 45c7d71cd654867498e22c325d136ed7,
+    type: 3}
+  BottomRightCorner: {fileID: 530504070840167631, guid: 94e6e8b57d752f648978571b9871236c,
+    type: 3}
+  BottomLeftCorner: {fileID: 6357726143554343068, guid: 7a5bee00da5247a48995e1023d5b6dca,
+    type: 3}
+  floorTile: {fileID: 1665470147164001030, guid: f6f1a2643b4ba5843aee997abbfe768b,
+    type: 3}
+  EntryStairs: {fileID: 8806800229567743794, guid: 29e5edf67fee6124fa6b1ddd6d157c5a,
+    type: 3}
+  ExitStairs: {fileID: 1530994494710350385, guid: 4523ede6bb80d6a429b84fc8dd371801,
+    type: 3}
+  BarrelOne: {fileID: 1759149306682248161, guid: f77cfa0bd455f304b890a73a26a7692a,
+    type: 3}
+  spacing: 5
+  isReadyToSpawn: 0
