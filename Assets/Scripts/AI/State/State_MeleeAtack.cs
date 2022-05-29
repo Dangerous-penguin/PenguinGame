@@ -11,15 +11,17 @@ namespace DangerousPenguin.AI
         private FSM _fsm;
         private EnemySO _enemySO;
         private NavMeshAgent _agent;
+        private Animator _animator;
         private Func<Transform> GetTarget;
 
         private float _attackTimer;
 
-        public State_MeleeAtack(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Func<Transform> GetTarget)
+        public State_MeleeAtack(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Animator animator, Func<Transform> GetTarget)
         {
             _fsm = fsm;
             _enemySO = enemySO;
             _agent = agent;
+            _animator = animator;
             this.GetTarget = GetTarget;
         }
 
@@ -28,6 +30,7 @@ namespace DangerousPenguin.AI
             if(_attackTimer <= 0)
             {
                 Debug.Log("Attack"); //add attack system
+                _animator.SetTrigger("Attack");
                 _attackTimer = _enemySO.attackCooldown;
             }
             else

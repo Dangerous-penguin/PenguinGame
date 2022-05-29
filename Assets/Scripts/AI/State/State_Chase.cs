@@ -12,14 +12,16 @@ namespace DangerousPenguin.AI
         private EnemySO _enemySO;
         private NavMeshAgent _agent;
         private Transform _transform;
+        private Animator _animator;
         private Func<Transform> GetTarget;
 
-        public State_Chase(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, Func<Transform> GetTarget)
+        public State_Chase(FSM fsm, EnemySO enemySO, NavMeshAgent agent, Transform cachedTransform, Animator animator, Func<Transform> GetTarget)
         {
             _fsm = fsm;
             _enemySO = enemySO;
             _agent = agent;
             _transform = cachedTransform;
+            _animator = animator;
             this.GetTarget = GetTarget;
         }
 
@@ -33,6 +35,7 @@ namespace DangerousPenguin.AI
             _agent.stoppingDistance = _enemySO.attackRange;
             _agent.SetDestination(GetTarget().position);
             _agent.isStopped = false;
+            _animator.SetBool("IsMoving",true);
         }
 
         public void OnStateExit()
@@ -40,6 +43,7 @@ namespace DangerousPenguin.AI
             _agent.stoppingDistance = 0;
             _agent.SetDestination(_transform.position);
             _agent.isStopped = true;
+            _animator.SetBool("IsMoving",false);
         }
     }
 }

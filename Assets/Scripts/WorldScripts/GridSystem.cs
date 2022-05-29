@@ -21,13 +21,17 @@ public class GridSystem : MonoBehaviour
 
     public GameObject EntryStairs;
     public GameObject ExitStairs;
+    public GameObject BarrelOne;
     public float spacing;
+
+    public bool isReadyToSpawn = false;
 
     private int[,] roomGrid;
 
     void Start()
     {
         roomGrid = new int[width, height];
+
         PlaceTiles();
         PlaceStairs();
     }
@@ -48,60 +52,63 @@ public class GridSystem : MonoBehaviour
                 }
                 else{
                 roomGrid[x,y] = 0;
-                }
-                Debug.Log($"{roomGrid[x,y]}");
+                }            
             }
         }
     }
 
     void PlaceTiles(){
         SetGrid();
-        spacing = 5;
         for(int x = 0; x < width; x++){
             for(int y = 0; y < height; y++){
                 if(roomGrid[x,y] == 1){
 
-                    if(x == 0 && y != 0){
+                    if(x == 0 && y > 0 && y < height -1){
                         Instantiate(SideWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
                     }
                     else if(x == 0 && y == 0){
                         Instantiate(BottomLeftCorner, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
-                      //  spacing = 0;
+
                     }  
-                    else if(x == 0 && y == height -1){
-                        Instantiate(TopLeftCorner, new Vector3(x*spacing, 0, y * spacing),Quaternion.identity);
-                       // spacing = 0;
+                    else if(x == 0 && y == height-1){
+                        Instantiate(TopLeftCorner, new Vector3(x*spacing, 0, y*spacing),Quaternion.identity);
+
                     }
-                    else if(x > 0 && y == height -1){
-                       Instantiate(TopWall, new Vector3(x* spacing, 0, y*spacing), Quaternion.identity);
+                    else if(x > 0 && x < width -1 && y == height -1){
+                       Instantiate(TopWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
                     }
                     else if(x == width -1 && y == height -1){
-                        Instantiate(TopRightCorner, new Vector3(x * spacing, 0, y*spacing), Quaternion.identity);
-                       // spacing = 0;
+                        Debug.Log("topright");
+                        Instantiate(TopRightCorner, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
+
                     }
                     else if(x == width -1 && y != 0){
-                        Instantiate(SideWall, new Vector3(x * spacing, 0, y*spacing), Quaternion.identity);
+                        Instantiate(SideWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
                     }
                     else if(x == width -1 && y == 0){
-                        Instantiate(BottomRightCorner, new Vector3(x * spacing, 0, y*spacing), Quaternion.identity);
-                      //  spacing = 0;
+                        Instantiate(BottomRightCorner, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
+
                     }
                     else if(x > 0 && y==0){
-                        Instantiate(BottomWall, new Vector3(x * spacing, 0, y*spacing), Quaternion.identity);
-                    }
-                    
-                    
-                    
+                        Instantiate(BottomWall, new Vector3(x*spacing, 0, y*spacing), Quaternion.identity);
+                    }  
+                }
+                if(roomGrid[x,y] ==0){
+                    Instantiate(floorTile, new Vector3(x * spacing, 0 , y * spacing), Quaternion.identity);
                 }
             }
+            isReadyToSpawn = true;
         }
+
+        
     }
 
+
+
+
     void PlaceStairs(){
-        System.Random psrd = new System.Random();
-        float randY = psrd.Next(1, height - 1 );
-        Instantiate(EntryStairs, new Vector3(5, 0, randY), Quaternion.identity);
-        Instantiate(ExitStairs, new Vector3(width -1 ,0, randY), Quaternion.identity);
+        Instantiate(EntryStairs, new Vector3(5 , 0, 15), Quaternion.identity);
+        Instantiate(ExitStairs, new Vector3(34f ,0, 88f), Quaternion.identity);
     }
 
 
