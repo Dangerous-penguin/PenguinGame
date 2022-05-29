@@ -21,6 +21,7 @@ public class GridSystem : MonoBehaviour
 
     public GameObject EntryStairs;
     public GameObject ExitStairs;
+    public GameObject BarrelOne;
     public float spacing;
 
     public bool isReadyToSpawn = false;
@@ -30,6 +31,7 @@ public class GridSystem : MonoBehaviour
     void Start()
     {
         roomGrid = new int[width, height];
+
         PlaceTiles();
         PlaceStairs();
     }
@@ -50,7 +52,8 @@ public class GridSystem : MonoBehaviour
                 }
                 else{
                 roomGrid[x,y] = 0;
-                }            }
+                }            
+            }
         }
     }
 
@@ -100,9 +103,12 @@ public class GridSystem : MonoBehaviour
         
     }
 
+
+
+
     void PlaceStairs(){
         Instantiate(EntryStairs, new Vector3(5 , 0, 15), Quaternion.identity);
-        Instantiate(ExitStairs, new Vector3(87f ,0, 87f), Quaternion.identity);
+        Instantiate(ExitStairs, new Vector3(34f ,0, 88f), Quaternion.identity);
     }
 
 

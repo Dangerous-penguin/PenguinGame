@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec10c6b56f4bebb4a84671a6e033be86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 20
+  width: 10
   height: 20
   SideWall: {fileID: 2603388714739489424, guid: 10c91b636db6040489756d575cc76699,
     type: 3}
@@ -64,6 +64,8 @@ MonoBehaviour:
   EntryStairs: {fileID: 8806800229567743794, guid: 29e5edf67fee6124fa6b1ddd6d157c5a,
     type: 3}
   ExitStairs: {fileID: 1530994494710350385, guid: 4523ede6bb80d6a429b84fc8dd371801,
+    type: 3}
+  BarrelOne: {fileID: 1759149306682248161, guid: f77cfa0bd455f304b890a73a26a7692a,
     type: 3}
   spacing: 5
   isReadyToSpawn: 0
