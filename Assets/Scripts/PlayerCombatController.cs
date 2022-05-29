@@ -122,7 +122,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void DoFastAttack()
     {
-        if (_attacking) return;
+       // if (_attacking && (!_currentAbility || _currentAbility.Ability == AttackType.StrongAttack)) return;
         abilities[0].Execute(this);
     }
 
@@ -205,9 +205,9 @@ public class PlayerCombatController : MonoBehaviour
         var hits = Physics.OverlapSphere(transform.position, meleeRadius, enemyLayerMask);
         foreach (var hit in hits)
         {
-            if(Vector3.Dot(hit.transform.position - transform.position, transform.forward)<0.2) continue;
+            if (Vector3.Dot(hit.transform.position - transform.position, transform.forward) < 0.2) continue;
             var health = hit.GetComponent<Health>();
-            if(health == null) continue;
+            if (health == null) continue;
             Debug.Log($"Attacking {hit.gameObject} for {damage}");
             health.TakeDamage(damage);
         }
@@ -215,7 +215,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color=Color.red;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, meleeRadius);
         Gizmos.DrawRay(transform.position, transform.forward);
     }

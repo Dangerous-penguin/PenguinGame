@@ -14736,16 +14736,6 @@ PrefabInstance:
       propertyPath: moveIndicator
       value: 
       objectReference: {fileID: 80470266}
-    - target: {fileID: 5247309818022152079, guid: 5b020c803a159394bbe7b7c0f03cd87d,
-        type: 3}
-      propertyPath: meleeRadius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5247309818022152079, guid: 5b020c803a159394bbe7b7c0f03cd87d,
-        type: 3}
-      propertyPath: enemyLayerMask.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 5767627346728584002, guid: 5b020c803a159394bbe7b7c0f03cd87d,
         type: 3}
       propertyPath: m_Name

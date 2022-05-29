@@ -17,7 +17,7 @@ MonoBehaviour:
   attackRange: 4.43
   aggroRange: 17
   chaseRange: 38.89
-  attackCooldown: 2
+  attackCooldown: 1.5
   attackDamage: 10
   maxHealth: 10
   playerTarget: {fileID: 0}
