@@ -792,22 +792,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3092914270365496467}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ebdf23db87f2d84eb5b0591c79f920a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eldritchBlastInfo: {fileID: 0}
-  dashInfo: {fileID: 0}
+  eldritchBlastInfo: {fileID: 11400000, guid: 61b604ef8ea093443935620314421e4b, type: 2}
+  dashInfo: {fileID: 11400000, guid: f588bee3327cb424b91867e93ecd3ae2, type: 2}
   eBlast: {fileID: 3092914270345661262}
-  cooldownBlast: 5
-  blastKey: 113
   blink: {fileID: 3092914270896413655}
-  cooldownBlink: 3
-  blinkKey: 9
-  firePillar: {fileID: 3092914269158364452}
-  cooldownFirePillar: 2
-  dashKey: 119
   pengu: {fileID: 3092914270639417397}
   penguHorns: {fileID: 3092914270090248047}
   fullPengu: {fileID: 3092914269808049215}

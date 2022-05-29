@@ -19,7 +19,7 @@ public class PlayerCombatController : MonoBehaviour
     private static readonly int AttackTrigger     = Animator.StringToHash("Attack");
     private static readonly int MagicAttack       = Animator.StringToHash("MagicAttack");
     private static readonly int DashAttack        = Animator.StringToHash("Dash");
-
+    
     private GameControls _input;
     private AbilityBase  _currentAbility;
 
@@ -27,6 +27,11 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private NavMeshAgent      navMeshAgent;
     [SerializeField] private Animator          animator;
     [SerializeField] private PlayerController  player;
+
+    [Header("Demonic parts")]
+    [SerializeField] private GameObject horns;
+    [SerializeField] private GameObject fieryEyes;
+    
 
     private void Awake()
     {
@@ -175,6 +180,7 @@ public class PlayerCombatController : MonoBehaviour
                 animator.SetTrigger(DashAttack);
                 break;
             case AttackType.FireDash:
+                animator.SetTrigger(DashAttack);
                 break;
             case AttackType.FireBall:
                 animator.SetTrigger(MagicAttack);

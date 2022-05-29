@@ -27,7 +27,7 @@ namespace DangerousPenguin.Abilities.AbilityPowers
             if (exploding) return;
             
             //compare with ignore collision mask
-            if ((other.gameObject.layer & collisionIgnoreMask.value) != 0) return;
+            if (((1 << other.gameObject.layer) & collisionIgnoreMask.value) != 0) return;
             
             Debug.Log($"Hit! {other.gameObject}");
             Destroy(projectile.gameObject,0.5f);

@@ -12,4 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca317cdf4af345b98509a4a68f3b59c3, type: 3}
   m_Name: Fire Dash
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 1
+  timeToHit: 0
+  MoveSpeed: 30
+  MoveSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.01128006
+      value: -0.014141083
+      inSlope: 15.401788
+      outSlope: 15.401788
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.0546217
+      value: 1.0008638
+      inSlope: 0.031323012
+      outSlope: 0.031323012
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.49488598
+      value: 0.99906445
+      inSlope: -0.18220365
+      outSlope: -0.18220365
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13676877
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0287137
+      value: -0.5175563
+      inSlope: -2.8410304
+      outSlope: -2.8410304
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  groundEffect: {fileID: 2914085975424786257, guid: 509827b1711782248abed9fcac322bb2,
+    type: 3}
