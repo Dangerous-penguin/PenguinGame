@@ -13,6 +13,7 @@ namespace DangerousPenguin.Abilities.AbilityPowers
         [SerializeField] private GameObject explosion;
         [SerializeField] private Collider   explosionCollider;
         [SerializeField] private Light      lights;
+        [SerializeField] private Renderer   ball;
 
         private bool exploding = false;
         
@@ -39,6 +40,7 @@ namespace DangerousPenguin.Abilities.AbilityPowers
             if (((1 << other.gameObject.layer) & collisionIgnoreMask.value) != 0) return;
             
             Debug.Log($"Hit! {other.gameObject}");
+            ball.enabled = false;
             Destroy(projectile.gameObject,0.5f);
             explosion.SetActive(true);
             exploding                 = true;

@@ -74,6 +74,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void UseSkillInputPerformed(InputAction.CallbackContext obj)
     {
+        if (_attacking) return;
         int abilityIndex = -1;
         if (obj.action.name == _input.Game.UseSkill1.name)
         {
@@ -115,11 +116,13 @@ public class PlayerCombatController : MonoBehaviour
 
     private void DoPrimaryAttack()
     {
+        if (_attacking) return;
         abilities[1].Execute(this);
     }
 
     private void DoFastAttack()
     {
+        if (_attacking) return;
         abilities[0].Execute(this);
     }
 
