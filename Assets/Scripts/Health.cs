@@ -37,7 +37,7 @@ namespace DangerousPenguin
             currentHealth = Mathf.Clamp(currentHealth -dmg, -1, maxHealth);
             if (currentHealth <= 0)
             {
-                gameOverCanvas?.SetActive(true);
+                if (gameOverCanvas != null) gameOverCanvas.SetActive(true);
                 Destroy(this.gameObject);
                 Debug.LogWarning("You died");
             }
