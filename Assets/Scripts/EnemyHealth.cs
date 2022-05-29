@@ -10,12 +10,14 @@ namespace DangerousPenguin
 
         private float fillAmount = 1f;
         private Slider slider;
+        public GameObject player;
 
         [SerializeField] private Health healthComponent;
         // Start is called before the first frame update
         void Start()
         {
             slider = GetComponent<Slider>();
+            player = FindObjectOfType<Player>();
         }
 
         // Update is called once per frame
@@ -24,6 +26,10 @@ namespace DangerousPenguin
             if(healthComponent){
                 var (cur, max) = healthComponent.CurrentHealth;
                 fillAmount = cur/max;
+                transform.LookAt(player.transform);
+            }
+            if(fillAmount <= 0){
+                Destroy(gameObject);
             }
             HealthChanger();
         }
