@@ -7,7 +7,6 @@ namespace DangerousPenguin
 {
     public class Health : MonoBehaviour
     {
-
         public (float current, float max) CurrentHealth => (currentHealth, maxHealth);
         
         [SerializeField] private float maxHealth       = 100.0f;
@@ -35,7 +34,11 @@ namespace DangerousPenguin
         public void TakeDamage(float dmg)
         {
             currentHealth = Mathf.Clamp(currentHealth -dmg, -1, maxHealth);
-            if(currentHealth < 0) Debug.LogWarning("You died");
+            if (currentHealth <= 0)
+            {
+                Destroy(this.gameObject);
+                Debug.LogWarning("You died");
+            }
         }
     }
 }
