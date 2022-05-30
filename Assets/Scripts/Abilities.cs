@@ -19,7 +19,7 @@ public class Abilities : MonoBehaviour
     public Image fullPengu;
 
     public bool isBlastEnabled      = false;
-    public bool isFirePillarEnabled = false;
+    public bool isFireDashEnabled = false;
 
     void Start()
     {
@@ -57,7 +57,7 @@ public class Abilities : MonoBehaviour
             penguHorns.enabled = true;
         }
 
-        if (isFirePillarEnabled)
+        if (isFireDashEnabled)
         {
             penguHorns.enabled = false;
             fullPengu.enabled  = true;

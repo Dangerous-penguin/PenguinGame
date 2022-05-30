@@ -168,9 +168,9 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out var hit, 100.0f, groundLayerMask))
         {
             position = hit.point;
-            return true;
+            return hit.collider.gameObject.name != "FakeGround";
         }
-
+        
         position = Vector3.negativeInfinity;
         return false;
     }
@@ -198,7 +198,8 @@ public class PlayerController : MonoBehaviour
 
     public void RotateTowardsCursor()
     {
-        if (!GetMouseLocation(out var mousePos)) return;
+        GetMouseLocation(out var mousePos);
+        if (mousePos == Vector3.negativeInfinity) return;
         var lookAt = (mousePos - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(lookAt);
     }

@@ -78,15 +78,14 @@ public class PlayerCombatController : MonoBehaviour
         int abilityIndex = -1;
         if (obj.action.name == _input.Game.UseSkill1.name)
         {
-            abilityIndex = 2;
+            //roll or fire-roll
+            abilityIndex = abilities.FindIndex(a=> a.Ability == (fireDashEnabled ? AttackType.FireDash : AttackType.Dash));
         }
         else if (obj.action.name == _input.Game.UseSkill2.name)
         {
-            abilityIndex = 3;
-        }
-        else if (obj.action.name == _input.Game.UseSkill3.name)
-        {
-            abilityIndex = 4;
+            //fireball
+            if(fireBallEnabled)
+                abilityIndex = abilities.FindIndex(a=>a.Ability == AttackType.FireBall);
         }
 
         if (abilityIndex >= 0)
@@ -205,7 +204,7 @@ public class PlayerCombatController : MonoBehaviour
         var hits = Physics.OverlapSphere(transform.position, meleeRadius, enemyLayerMask);
         foreach (var hit in hits)
         {
-            if (Vector3.Dot(hit.transform.position - transform.position, transform.forward) < 0.2) continue;
+            if (Vector3.Dot(hit.transform.position - transform.position, transform.forward) < 0) continue;
             var health = hit.GetComponent<Health>();
             if (health == null) continue;
             Debug.Log($"Attacking {hit.gameObject} for {damage}");
@@ -218,6 +217,18 @@ public class PlayerCombatController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, meleeRadius);
         Gizmos.DrawRay(transform.position, transform.forward);
+    }
+
+    private bool fireBallEnabled=false;
+    private bool fireDashEnabled=false;
+    public void ActivateFireBall()
+    {
+        fireBallEnabled = true;
+    }
+
+    public void ActivateFireDash()
+    {
+        fireDashEnabled = true;
     }
 }
 

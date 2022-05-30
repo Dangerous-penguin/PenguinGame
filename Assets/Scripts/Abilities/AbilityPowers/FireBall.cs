@@ -6,14 +6,15 @@ namespace DangerousPenguin.Abilities.AbilityPowers
 {
     public class FireBall : MonoBehaviour
     {
-        [SerializeField] private float      damage          = 40.0f;
-        [SerializeField] private float      projectileSpeed = 10.0f;
-        [SerializeField] private LayerMask  collisionIgnoreMask;
-        [SerializeField] private GameObject projectile;
-        [SerializeField] private GameObject explosion;
-        [SerializeField] private Collider   explosionCollider;
-        [SerializeField] private Light      lights;
-        [SerializeField] private Renderer   ball;
+        [SerializeField] private float          damage          = 40.0f;
+        [SerializeField] private float          projectileSpeed = 10.0f;
+        [SerializeField] private LayerMask      collisionIgnoreMask;
+        [SerializeField] private GameObject     projectile;
+        [SerializeField] private GameObject     explosion;
+        [SerializeField] private Collider       explosionCollider;
+        [SerializeField] private Light          lights;
+        [SerializeField] private Renderer       ball;
+        [SerializeField] private ParticleSystem particles;
 
         private bool exploding = false;
         
@@ -41,7 +42,8 @@ namespace DangerousPenguin.Abilities.AbilityPowers
             
             Debug.Log($"Hit! {other.gameObject}");
             ball.enabled = false;
-            Destroy(projectile.gameObject,0.5f);
+            //Destroy(projectile.gameObject,2f);
+            particles.Stop();
             explosion.SetActive(true);
             exploding                 = true;
             explosionCollider.enabled = true;

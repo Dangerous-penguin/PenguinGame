@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTimerMin: 1
   waitTimerMax: 3
-  attackRange: 4.43
+  attackRange: 6
   aggroRange: 17
   chaseRange: 38.89
-  attackCooldown: 1.5
+  attackCooldown: 1
   attackDamage: 10
   maxHealth: 10
   playerTarget: {fileID: 0}

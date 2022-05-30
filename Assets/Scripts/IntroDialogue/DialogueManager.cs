@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour
             _textToWrite = "";
             _counter     = 0;
 
-            SceneManager.LoadScene("TheGame");
+            SceneManager.LoadScene("WorldBulding");
             
             return;
         }

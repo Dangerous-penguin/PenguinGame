@@ -48,7 +48,7 @@ namespace DangerousPenguin.AI
             AddTransition(patrolState,waitState,() => HaveArrived(0.1f));
             AddTransition(patrolState,chaseState,() => CheckForPlayer(enemySO.aggroRange));
             AddTransition(chaseState, waitState, () => _targetPlayer == null);
-            AddTransition(chaseState,attackState,() => CheckWithinDistance(cachedTransform, _targetPlayer, enemySO.attackRange));
+            AddTransition(chaseState,attackState,() => CheckWithinDistance(cachedTransform, _targetPlayer, enemySO.attackRange-1.0f));
             AddTransition(chaseState,waitState,() => !PlayerInRadius(enemySO.aggroRange));
             AddTransition(attackState, waitState, () => _targetPlayer == null);
             AddTransition(attackState,chaseState,() => !CheckWithinDistance(cachedTransform,_targetPlayer,enemySO.attackRange));

@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroDialogue/Intro.unity
     guid: cc3971d8b19dd1b4b9a8a581bef129db
   - enabled: 1
-    path: Assets/Scenes/TheGame.unity
-    guid: 673a66467a31a294997e6da6af360247
+    path: Assets/Scenes/WorldBulding.unity
+    guid: 83870029c237a37449bb0ad6cf9ad766
   m_configObjects: {}
