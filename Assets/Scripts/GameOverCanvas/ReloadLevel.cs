@@ -11,5 +11,10 @@ namespace DangerousPenguin
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        
+        public void BackToMenu()
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 }
