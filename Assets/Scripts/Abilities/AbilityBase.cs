@@ -13,7 +13,7 @@ public abstract class AbilityBase : ScriptableObject
     public float CooldownRemaining    => Cooldown - (Time.time - _lastTimeUsed);
     public float CooldownRemainingPct => Mathf.Clamp01(CooldownRemaining / Cooldown);
 
-    public bool IsActive;
+    //public bool isActive;
     
     [SerializeField] private float cooldown;
     [SerializeField] private float timeToHit;
@@ -28,11 +28,11 @@ public abstract class AbilityBase : ScriptableObject
 
     public void Execute(PlayerCombatController player)
     {
-        if (!IsActive)
-        {
-            Debug.Log($"Attack: {GetType().Name} is inactive");
-            return;
-        }
+        // if (!isActive)
+        // {
+        //     Debug.Log($"Attack: {GetType().Name} is inactive");
+        //     return;
+        // }
         if (CooldownRemaining <= 0)
         {
             Debug.Log($"Doing the {GetType().Name} attack");

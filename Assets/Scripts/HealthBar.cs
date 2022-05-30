@@ -8,7 +8,9 @@ public class HealthBar : MonoBehaviour
     private float fillAmount = 1f;
     private MeshRenderer potionMat;
 
+    [SerializeField] private float  fillSmoothing = 40.0f;
     [SerializeField] private Health healthComponent;
+    private static readonly  int    FillProperty = Shader.PropertyToID("_fill");
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,9 @@ public class HealthBar : MonoBehaviour
         HealthChanger();
     }
 
-    void HealthChanger(){
-        potionMat.material.SetFloat("_fill", fillAmount);
+    void HealthChanger()
+    {
+        var current = potionMat.material.GetFloat(FillProperty);
+        potionMat.material.SetFloat(FillProperty, Mathf.Lerp(current, fillAmount, Time.deltaTime * fillSmoothing));
     }
 }

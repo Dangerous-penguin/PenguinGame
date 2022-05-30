@@ -42,6 +42,8 @@ public class State_MeleeAtack : IState
         {
             _attackTimer -= Time.deltaTime;
         }
+
+        _agent.transform.rotation = Quaternion.LookRotation((GetTarget().position - _agent.transform.position).normalized);
     }
 
     private void PerformAttack()
@@ -54,6 +56,7 @@ public class State_MeleeAtack : IState
             Debug.LogWarning($"Enemy target {target.gameObject} is missing a Health component!");
             return;
         }
+
         Debug.Log($"Enemy attacking {target.gameObject} for {damage}");
         health.TakeDamage(damage);
     }

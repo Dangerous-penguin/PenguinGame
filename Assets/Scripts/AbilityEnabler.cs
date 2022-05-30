@@ -28,10 +28,11 @@ namespace DangerousPenguin
         }
         private void Update()
         {
-            if (!_active) return;
+            if (!_active || !_player) return;
             if (Vector3.Distance(transform.position, _player.position) < _triggerDistance)
             {
                 _active = false;
+                _player.GetComponent<SkillManager>().ReceiveSkill(_ability);
                 StartCoroutine(FadeAway());
             }
         }
@@ -39,7 +40,7 @@ namespace DangerousPenguin
         private IEnumerator FadeAway()
         {
             _light.intensity = 50f;
-            _ability.IsActive = true;
+          //  _ability.isActive = true;
             while (_light.intensity > 0)
             {
                 _light.intensity -= 0.5f;

@@ -32,7 +32,7 @@ namespace DangerousPenguin.AI
 
         public void OnStateEnter()
         {
-            _agent.stoppingDistance = _enemySO.attackRange;
+            _agent.stoppingDistance = 1.0f;
             _agent.SetDestination(GetTarget().position);
             _agent.isStopped = false;
             _animator.SetBool("IsMoving",true);
