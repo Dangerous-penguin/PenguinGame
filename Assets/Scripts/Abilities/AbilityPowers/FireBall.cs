@@ -52,6 +52,7 @@ namespace DangerousPenguin.Abilities.AbilityPowers
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.CompareTag("Player")) return; // no friendly fire
             var health = other.GetComponent<Health>();
             if (health != null)
             {

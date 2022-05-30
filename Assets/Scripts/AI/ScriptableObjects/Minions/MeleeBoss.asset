@@ -9,8 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cf3e47668e4d5f87d8ffe14960d0e4, type: 3}
-  m_Name: Power Slap
+  m_Script: {fileID: 11500000, guid: e6c0175d6cb78514392fdc3e1ca99fa2, type: 3}
+  m_Name: MeleeBoss
   m_EditorClassIdentifier: 
-  cooldown: 3
-  timeToHit: 0.8
+  waitTimerMin: 1
+  waitTimerMax: 3
+  attackRange: 7.3
+  aggroRange: 21.8
+  chaseRange: 32.85
+  attackCooldown: 2.5
+  attackDamage: 30
+  maxHealth: 400
+  playerTarget: {fileID: 0}

@@ -40,8 +40,7 @@ public class PlayerCombatController : MonoBehaviour
 
     [Header("Demonic parts")]
     [SerializeField] private GameObject horns;
-
-    [SerializeField] private GameObject fieryEyes;
+    [SerializeField] private EyeSwapper eyeSwapper;
 
 
     private void Awake()
@@ -121,7 +120,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private void DoFastAttack()
     {
-       // if (_attacking && (!_currentAbility || _currentAbility.Ability == AttackType.StrongAttack)) return;
+        if (_attacking && (!_currentAbility || _currentAbility.Ability != AttackType.StrongAttack)) return;
         abilities[0].Execute(this);
     }
 
@@ -180,8 +179,11 @@ public class PlayerCombatController : MonoBehaviour
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
     }
 
-    public void OnAttackAnimationEnd()
+    public void OnAttackAnimationEnd(bool powerAttack)
     {
+        if (_currentAbility.Ability == AttackType.FastAttack && powerAttack) return;
+        if (_currentAbility.Ability == AttackType.StrongAttack && !powerAttack) return;
+        
         OnAttackEnd();
     }
 
@@ -207,7 +209,6 @@ public class PlayerCombatController : MonoBehaviour
             if (Vector3.Dot(hit.transform.position - transform.position, transform.forward) < 0) continue;
             var health = hit.GetComponent<Health>();
             if (health == null) continue;
-            Debug.Log($"Attacking {hit.gameObject} for {damage}");
             health.TakeDamage(damage);
         }
     }
@@ -224,11 +225,13 @@ public class PlayerCombatController : MonoBehaviour
     public void ActivateFireBall()
     {
         fireBallEnabled = true;
+        horns.SetActive(true);
     }
 
     public void ActivateFireDash()
     {
         fireDashEnabled = true;
+        eyeSwapper.GlowThemEyes();
     }
 }
 

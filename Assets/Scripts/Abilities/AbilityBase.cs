@@ -8,10 +8,11 @@ public abstract class AbilityBase : ScriptableObject
 {
     public abstract AttackType Ability      { get; }
 
-    public float Cooldown             => cooldown;
-    public bool  OnCooldown           => CooldownRemaining >= 0;
-    public float CooldownRemaining    => Cooldown - (Time.time - _lastTimeUsed);
-    public float CooldownRemainingPct => Mathf.Clamp01(CooldownRemaining / Cooldown);
+    public            float Cooldown             => cooldown;
+    public            bool  OnCooldown           => CooldownRemaining > 0;
+    public            float CooldownRemaining    => Cooldown - (Time.time - _cooldownStart);
+    public            float CooldownRemainingPct => Mathf.Clamp01(CooldownRemaining / Cooldown);
+    protected virtual bool  CooldownOnHit        => false;
 
     //public bool isActive;
     
@@ -19,25 +20,23 @@ public abstract class AbilityBase : ScriptableObject
     [SerializeField] private float timeToHit;
 
     private float _lastTimeUsed = float.MinValue;
-    private bool  _hit           = false;
+    private float _cooldownStart = float.MinValue;
+    protected bool  _hit           = false;
 
     private void OnEnable()
     {
-        _lastTimeUsed = float.MinValue;
+        _lastTimeUsed  = float.MinValue;
+        _cooldownStart = float.MinValue;
     }
 
-    public void Execute(PlayerCombatController player)
+    public virtual void Execute(PlayerCombatController player)
     {
-        // if (!isActive)
-        // {
-        //     Debug.Log($"Attack: {GetType().Name} is inactive");
-        //     return;
-        // }
         if (CooldownRemaining <= 0)
         {
             Debug.Log($"Doing the {GetType().Name} attack");
-            _hit           = false;
+            _hit          = false;
             _lastTimeUsed = Time.time;
+            if(!CooldownOnHit)_cooldownStart = Time.time;
             if(player.OnAttackStart(Ability, this))
                 Perform(player);
         }
@@ -62,7 +61,7 @@ public abstract class AbilityBase : ScriptableObject
 
     protected virtual void OnHit(PlayerCombatController player)
     {
-
+        if(CooldownOnHit)_cooldownStart = Time.time;
     }
 }
 

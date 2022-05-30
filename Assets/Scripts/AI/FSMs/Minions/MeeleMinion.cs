@@ -10,6 +10,8 @@ namespace DangerousPenguin.AI
     {
         private FSM _fsm;
 
+        [SerializeField] private bool showGizmos = false;
+
         [field: SerializeField] public EnemySO enemySO { get; private set;}
         [field: SerializeField] public LayerMask playerLayer { get; private set;}
 
@@ -108,18 +110,18 @@ namespace DangerousPenguin.AI
 
         private void OnDrawGizmos()
         {
-            if (!Application.isPlaying && true) return;
-            if(_fsm._currentState.GetType() == typeof(State_Patrol) || _fsm._currentState.GetType() == typeof(State_Wait))
+            if (!showGizmos && !Application.isPlaying && true) return;
+            if(showGizmos || _fsm._currentState.GetType() == typeof(State_Patrol) || _fsm._currentState.GetType() == typeof(State_Wait))
             {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(transform.position, enemySO.aggroRange);
             }
-            if (_fsm._currentState.GetType() == typeof(State_Chase) || _fsm._currentState.GetType() == typeof(State_MeleeAtack))
+            if (showGizmos || _fsm._currentState.GetType() == typeof(State_Chase) || _fsm._currentState.GetType() == typeof(State_MeleeAtack))
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
             }
-            if (_fsm._currentState.GetType() == typeof(State_Chase))
+            if (showGizmos || _fsm._currentState.GetType() == typeof(State_Chase))
             {
                 Gizmos.color = Color.green;
                 Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);

@@ -14,7 +14,8 @@ public class AnimationEndNotifier : StateMachineBehaviour
     {
         //Debug.Log($"State exit to Movement: {animator.GetNextAnimatorStateInfo(layerIndex).shortNameHash == Animator.StringToHash("Movement")}");
         //if(animator.GetNextAnimatorStateInfo(layerIndex).shortNameHash == Animator.StringToHash("Movement"))return;
-        PlayerCombatController.Instance.OnAttackAnimationEnd();
+        bool powerAttack = stateInfo.IsName("PowerAttack");
+        PlayerCombatController.Instance.OnAttackAnimationEnd(powerAttack);
     }
 
 }

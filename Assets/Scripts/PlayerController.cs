@@ -85,12 +85,12 @@ public class PlayerController : MonoBehaviour
         if (!_path.corners.Any())
             NavMesh.CalculatePath(transform.position, _moveTarget, NavMesh.AllAreas, _path);
 
-        if (lineRenderer)
-        {
-            //TODO: remove. debug lines
-            lineRenderer.positionCount = _path.corners.Length;
-            lineRenderer.SetPositions(_path.corners);
-        }
+        // if (lineRenderer)
+        // {
+        //     //TODO: remove. debug lines
+        //     lineRenderer.positionCount = _path.corners.Length;
+        //     lineRenderer.SetPositions(_path.corners);
+        // }
 
         var navMagnitude = 0.0f;
         for (int i = 0; i < _path.corners.Length - 1; i++)
