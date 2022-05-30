@@ -242,18 +242,18 @@ MonoBehaviour:
   _dialogueData:
   - You failed them
   - You were not strong enough
-  - You swore to protect them but all you could do is watch
+  - You swore to protect them but all you could do was watch
   - There is no one to blame except yourself
   - If only you were faster
   - If only you were stronger
   - If only you had power
   - I can offer you that
-  - Work for me, offer your soul and i shald grant you power
+  - Work for me, offer your soul and i shall grant you power
   - I SHALL GIVE YOU MY STRENGHT TO TAKE REVENGE ON THOSE WHO WRONGED YOU
   - YOUR DEATH WILL ONLY BE THE BEGINING OF THEIR DOOM
   - WHAT IS YOUR ANSWER LITTLE ONE
   - WILL YOU ACCEPT THIS POWER
-  - WILL YOU LET YOUR SOUL BE ENGOLFED BY CHAOS
+  - WILL YOU LET YOUR SOUL BE ENGULFED BY CHAOS
   - WILL YOU TAKE YOUR REVENGE
   textBox: {fileID: 360666694}
   wave:
